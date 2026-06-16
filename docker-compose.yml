@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  radical_sea_bunny:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: radical_sea_bunny
+    hostname: radical_sea_bunny
+    restart: unless-stopped
+    
+    # Network configuration
+    network_mode: host
+    # Or use port mapping:
+    # ports:
+    #   - "5000:5000"
+    #   - "8080:8080"
+    
+    # Security capabilities for raw sockets and network operations
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+      - SYS_RAWIO
+    
+    # Environment variables
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=UTC
+      - RADICAL_SEA_BUNNY_ENV=docker
+      - WEB_HOST=0.0.0.0
+      - WEB_PORT=5000
+    
+    # Volumes for persistent data
+    volumes:
+      - radical_sea_bunny_data:/app/.radical_sea_bunny
+      - radical_sea_bunny_reports:/app/radical_sea_bunny_reports
+      - radical_sea_bunny_ssh:/root/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # Optional: for container monitoring
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+    
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  radical_sea_bunny_data:
+    name: radical_sea_bunny_data
+  radical_sea_bunny_reports:
+    name: radical_sea_bunny_reports
+  radical_sea_bunny_ssh:
+    name: radical_sea_bunny_ssh
