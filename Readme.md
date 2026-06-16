@@ -35,7 +35,8 @@ This cross-platform compatibility ensures that security researchers can maintain
 Communication Vectors: The Multi-Channel C2 Interface
 RADICAL SEA BUNNY revolutionizes C2 operations by establishing command interfaces through ubiquitous communication platforms. This multi-vector approach provides unparalleled operational flexibility and stealth.
 
-Telegram Command Relay
+# Telegram Command Relay
+
 The platform integrates deeply with Telegram's API, establishing secure bot-based command channels that leverage Telegram's MTProto encryption. Operators can issue commands directly from their mobile devices or desktop Telegram clients, receiving real-time execution results and telemetry data. The Telegram relay supports:
 
 Inline command execution via bot commands
@@ -48,20 +49,21 @@ Automatic command encryption and obfuscation
 
 Stealth mode that mimics benign bot behavior
 
-Discord Command Integration
+# Discord Command Integration
+
 Recognizing the prevalence of Discord within technical communities, RADICAL SEA BUNNY provides robust Discord integration through slash commands and webhook-based communication. Security teams can establish secure command channels within their existing Discord servers, enabling:
 
-Instant command execution through / slash commands
+* Instant command execution through / slash commands
 
-Rich embed results formatting for improved readability
+* Rich embed results formatting for improved readability
 
-Role-based access control for team member permissions
+* Role-based access control for team member permissions
 
-Automated alerting and notification systems
+* Automated alerting and notification systems
 
-Thread-based command tracking and result correlation
+* Thread-based command tracking and result correlation
 
-Slack Enterprise Command Relay
+# Slack Enterprise Command Relay
 For enterprise security teams operating within corporate environments, RADICAL SEA BUNNY offers seamless Slack integration. The platform creates secure command interfaces that blend naturally with legitimate business communications:
 
 Custom Slack app integration with OAuth 2.0 authentication
